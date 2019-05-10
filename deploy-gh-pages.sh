@@ -24,6 +24,13 @@ echo -e "DEPLOYING HTML TO GITHUB PAGES:"
 echo -e "HTML source: ${SOURCE}"
 echo -e "HTML destination: ${DESTINATION}"
 
+git clone --quiet --branch=gh-pages --single-branch --depth=5 https://github.com/${TRAVIS_REPO_SLUG}.git tmp-clone 2>&1 >/dev/null
+cd tmp-clone
+if [[ "${VERSION}" == "dev" && `git log -1 --format='%s'` == *"dev"* ]]; then
+    AMEND=true
+fi
+cd ..
+rm -rf tmp-clone
 
 cat > ${SOURCE}/process.sh << EOF
 #!/bin/bash
@@ -44,15 +51,14 @@ if [[ "${VERSION}" != "dev" ]]; then
 fi
 
 # If this is a dev build and the last commit was from a dev build, reuse the same commit
-if [[ "${VERSION}" == "dev" ]]; then
+if [[ "${AMEND}" == "true" ]]; then
     git add -A ${DESTINATION}
     git status
-    LOG=`git log -1 --format='%s'`
-    if [[ "$LOG"  == *"dev"* ]]; then
-        git commit --amend --reset-author --no-edit
-    else
-        git commit -m "Deploy $VERSION from TravisCI"
-    fi
+    git commit --amend --reset-author --no-edit
+elif [[ "${VERSION}" == "dev" ]]; then
+    git add -A ${DESTINATION}
+    git status
+    git commit -m "Deploy $VERSION from TravisCI"
 fi
 EOF
 
