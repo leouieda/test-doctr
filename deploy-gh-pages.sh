@@ -34,26 +34,26 @@ set -x
 # Need to have this file so that Github doesn't try to run Jekyll
 touch .nojekyll
 touch test-file
+git add -A .nojekyll test-file
 
 # If this is a new release, update the link from /latest to the new release
 if [[ "${VERSION}" != "dev" ]]; then
-    echo -e "Setup link from ${VERSION} to 'latest'"
     rm -f latest
     ln -sf ${DESTINATION} latest
+    git add -A latest
 fi
 
-echo -e "Add and commit changes"
-git add -A .
 git status
+
 # If this is a dev build and the last commit was from a dev build, reuse the
 # same commit
-if [[ "${VERSION}" == "dev" && `git log -1 --format='%s'` == *"dev"* ]]; then
-    echo -e "Amending last commit"
-    git commit --amend --reset-author --no-edit
-else
-    # Make a new commit
-    echo -e "Making a new commit"
-    git commit -m "Deploy $VERSION from TravisCI"
+if [[ "${VERSION}" == "dev" ]]; then
+    git add -A ${DESTINATION}
+    if [[ `git log -1 --format='%s'` == *"dev"* ]]; then
+        git commit --amend --reset-author --no-edit
+    else
+        git commit -m "Deploy $VERSION from TravisCI"
+    fi
 fi
 EOF
 
