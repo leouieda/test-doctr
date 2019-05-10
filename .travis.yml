@@ -65,23 +65,7 @@ install:
 script:
     # Build the documentation
     - make -C doc clean all
-
-# Deploy
-deploy:
-    # Push the built HTML in doc/_build/html to the gh-pages branch
-    - provider: script
-      script: deploy-gh-pages.sh
-      skip_cleanup: true
-      on:
-          branch: master
-          condition: '$DEPLOY_DOCS == "true"'
-    # Push HTML when building tags as well
-    - provider: script
-      script: deploy-gh-pages.sh
-      skip_cleanup: true
-      on:
-          tags: true
-          condition: '$DEPLOY_DOCS == "true"'
+    - ./deploy-gh-pages.sh
 
 # Don't send out emails every time a build fails
 notifications:
