@@ -1,4 +1,4 @@
-name: rockhound
+name: test-doctr
 channels:
     - conda-forge
     - defaults
@@ -10,6 +10,7 @@ dependencies:
     - pandas
     - rasterio
     # Development requirements
+    - doctr
     - matplotlib
     - cartopy
     - pytest

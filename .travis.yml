@@ -23,6 +23,8 @@ cache:
 env:
     global:
         # Encrypted variables
+        # Doctr deploy key for leouieda/test-doctr
+        - secure: "DYcwHwntO4sZgEM823calX8n9CnuwFJLzBfl0W5CeP/RhR4oXHRJPSZh4qTUcRERCPIXlbfJ1zAGz22WQE4MG8Py2amhPkUZdS05Fm7UcfnuD6OXSxFAdCQXFMlQgliVLVPE/0L8znoGkWge2j9FylTx85KKdL80S7LMndAm0AacyhhYgm0hSzDgB+8q9tNlUB7iJtbMzuKGQOD3VokVIM65I9tH5WXws8OYUzqv5VS6GlNbKFSzFhYLKxXne392XtwwvJjHb7Yz5CYTjxiI5F4EFnuz8mudgrtvxb1C9FipgsycFtj7+onEtUwxJq5GkVKiRjdOCwqDUYqK6poHzPLEolCGOkoGDTVOnZY9lCbRcci3kLtjSBmWq5qYwv2Klov0GNuxYHq18zaOPxIPsGWUQjh3Rqgpp3Uz6BnSHmHqOz4ZS9CTVldotBhlgTyRcj90Xq0pLkhjEc854U7Y67p22Pas76NaytGw1udA21wWmNR3ioVwdV+4MQae/UNFokCim1soIreUy1sVs2zZBNPoR1uFsgNNcj3sZfWEavocEqnNUiyONaA/dNCzuTOSMwNIi+5UzlP10oU7AwLBMao60JSpMPgnv6TmL6D3/Tc/OznfXDEnST56Nx2fK+lFAd4MdISAcbYT3BXZgF/lhSLpGqkroK5/R2G1jgvRENc="
         - TWINE_USERNAME=Leonardo.Uieda
         # The files with the listed requirements to be installed by conda
         - CONDA_REQUIREMENTS=requirements.txt
