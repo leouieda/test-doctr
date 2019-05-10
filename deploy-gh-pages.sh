@@ -7,6 +7,7 @@
 # the last tag.
 
 # To return a failure if any commands inside fail
+set -o xtrace
 set -e
 set -x
 
