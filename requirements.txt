@@ -1,4 +1,1 @@
 pooch
-xarray
-pandas
-rasterio

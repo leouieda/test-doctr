@@ -1,14 +1,5 @@
 # Development requirements
-matplotlib
-cartopy
-pytest
-pytest-cov
-coverage
-pylint
-flake8
 sphinx
 sphinx_rtd_theme
 sphinx-gallery
 numpydoc
-twine
-doctr

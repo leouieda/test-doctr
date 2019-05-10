@@ -43,6 +43,7 @@ matrix:
               - PYTHON=3.6
               - DEPLOY_DOCS=true
               - DEPLOY_PYPI=true
+              - CONDA_INSTALL_EXTRA="codecov twine doctr"
 
 # Setup the build environment
 before_install:
@@ -59,7 +60,7 @@ before_install:
 install:
     # Make a binary wheel for our package and install it
     - python setup.py bdist_wheel
-    - pip install dist/*
+    - pip install --no-deps dist/*
 
 # Run the actual tests and checks
 script:
