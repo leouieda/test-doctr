@@ -52,7 +52,7 @@ cat > ${SOURCE}/process.sh << EOF
     fi
 EOF
 
-doctr deploy ${VERSION} --build-tags --built-docs ${DESTINATION} --key-path .github/deploy_key.enc --command "./process.sh"
+doctr deploy ${DESTINATION} --build-tags --built-docs ${SOURCE} --key-path .github/deploy_key.enc --command "./process.sh"
 
 echo -e "Finished uploading generated files."
 

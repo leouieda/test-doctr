@@ -6,19 +6,7 @@ dependencies:
     - python=3.6
     - pip
     - pooch
-    - xarray
-    - pandas
-    - rasterio
     # Development requirements
-    - doctr
-    - matplotlib
-    - cartopy
-    - pytest
-    - pytest-cov
-    - coverage
-    - black
-    - pylint
-    - flake8
     - sphinx
     - sphinx_rtd_theme
     - sphinx-gallery
