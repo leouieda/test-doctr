@@ -43,13 +43,12 @@ if [[ "${VERSION}" != "dev" ]]; then
     git add -A latest
 fi
 
-git status
-
-# If this is a dev build and the last commit was from a dev build, reuse the
-# same commit
+# If this is a dev build and the last commit was from a dev build, reuse the same commit
 if [[ "${VERSION}" == "dev" ]]; then
     git add -A ${DESTINATION}
-    if [[ `git log -1 --format='%s'` == *"dev"* ]]; then
+    git status
+    LOG=`git log -1 --format='%s'`
+    if [[ "$LOG"  == *"dev"* ]]; then
         git commit --amend --reset-author --no-edit
     else
         git commit -m "Deploy $VERSION from TravisCI"
